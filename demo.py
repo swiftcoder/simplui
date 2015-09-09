@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-
+from __future__ import division
 # import pyglet, as usual
 import pyglet
 from simplui.theme import Theme

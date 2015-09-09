@@ -43,7 +43,7 @@ class Point(object):
 	def __getitem__(self, i):
 		return (self.x, self.y)[i]
 	
-	def ____(self):
+	def __iter__(self):
 		def gen():
 			for i in (self.x, self.y):
 				yield i
@@ -64,7 +64,7 @@ class Size(object):
 	def __getitem__(self, i):
 		return (self.w, self.h)[i]
 	
-	def ____(self):
+	def __iter__(self):
 		def gen():
 			for i in (self.w, self.h):
 				yield i
@@ -115,7 +115,7 @@ class Rect(object):
 	def max(self):
 		return (self.x + self.w, self.y + self.h)
 	
-	def ____(self):
+	def __iter__(self):
 		return ((self.x, self.y, self.w, self.h))
 	
 	def __repr__(self):

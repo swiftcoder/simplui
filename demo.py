@@ -2,17 +2,28 @@
 
 # import pyglet, as usual
 import pyglet
+from simplui.theme import Theme
+from simplui.frame import Frame
+from simplui.label import Label
+from simplui.dialogue import Dialogue
+from simplui.layout import VLayout, HLayout
+from simplui.folding_box import FoldingBox
+from simplui.button import Button
+from simplui.slider import Slider
+from simplui.checkbox import Checkbox
+from simplui.text_input import TextInput
+from simplui.flow_layout import FlowLayout
+
 # disable error checking for increased performance
 pyglet.options['debug_gl'] = False
 
 # and import out gui toolkit
-from simplui import *
 
 # create a basic pyglet window
 window = pyglet.window.Window(800, 600, caption='gui demo', vsync=False)
 
 # load some gui themes
-themes = [Theme('themes/macos'), Theme('themes/pywidget')]
+themes = [Theme('themes/pywidget'), Theme('themes/macos')]
 theme = 0
 
 # create a frame to contain our gui, the full size of our window
@@ -39,8 +50,8 @@ def button_action(button):
 	# and add a new label to it
 	element.add( Label('This is another label...') )
 
-def text_action(input):
-	print( 'text entered:', input.text)
+def text_action(ui_input):
+	print( 'text entered:', ui_input.text)
 
 # create dialogue - note that we create the entire gui in a single call
 dialogue = Dialogue('Inspector', x=200, y=500, content=

@@ -31,11 +31,11 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------
 
-import pyglet
 
 from .shape import Rectangle, BasicLabel
 from .geometry import Rect, Size
 from .widget import Widget
+from pyglet import event, window
 
 class Button(Widget):
 	"""Clickable button"""
@@ -112,34 +112,34 @@ class Button(Widget):
 		Widget.update_elements(self)
 	
 	def on_mouse_press(self, x, y, button, modifiers):
-		if button == pyglet.window.mouse.LEFT and self.active_region.hit_test(x, y):
+		if button == window.mouse.LEFT and self.active_region.hit_test(x, y):
 			self.shapes['frame'].patch = self.theme['button']['image_down']
 			self._down = True
-			return pyglet.event.EVENT_HANDLED
+			return event.EVENT_HANDLED
 		
 		Widget.on_mouse_press(self, x, y, button, modifiers)
-		return pyglet.event.EVENT_UNHANDLED
+		return event.EVENT_UNHANDLED
 	
 	def on_mouse_drag(self, x, y, dx, dy, button, modifiers):
-		if button == pyglet.window.mouse.LEFT and self._down:
+		if button == window.mouse.LEFT and self._down:
 			if self.active_region.hit_test(x, y):
 				self.shapes['frame'].patch = self.theme['button']['image_down']
 			else:
 				self.shapes['frame'].patch = self.theme['button']['image_up']
 			
-			return pyglet.event.EVENT_HANDLED
+			return event.EVENT_HANDLED
 				
 		Widget.on_mouse_drag(self, x, y, dx, dy, button, modifiers)
-		return pyglet.event.EVENT_UNHANDLED
+		return event.EVENT_UNHANDLED
 	
 	def on_mouse_release(self, x, y, button, modifiers):
-		if button == pyglet.window.mouse.LEFT and self._down:
+		if button == window.mouse.LEFT and self._down:
 			self.shapes['frame'].patch = self.theme['button']['image_up']
 			self._down = False
 			if self.active_region.hit_test(x, y):
 				if self.action:
 					self.action(self)
-				return pyglet.event.EVENT_HANDLED
+				return event.EVENT_HANDLED
 		
 		Widget.on_mouse_press(self, x, y, button, modifiers)
-		return pyglet.event.EVENT_UNHANDLED
+		return event.EVENT_UNHANDLED

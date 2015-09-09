@@ -32,7 +32,7 @@
 # ----------------------------------------------------------------------
 
 import pyglet
-from ninepatch import NinePatch
+from .ninepatch import NinePatch
 
 try:
 	import json
@@ -41,22 +41,22 @@ except ImportError:
 		import simplejson as json
 	except ImportError:
 		import sys
-		print '\nsimplui requires json support. upgrade to python 2.6 or install the simplejson module.\n'
+		print('\nsimplui requires json support. upgrade to python 2.6 or install the simplejson module.\n')
 		sys.exit(0)
 
 class Theme(dict):
 	def __init__(self, arg):
 		loader = pyglet.resource.Loader(path=arg)
 		
-		input = json.loads( loader.file('theme.json').read() )
+		input = json.loads( open(arg+'/theme.json').read() )
 		
 		image = loader.texture( input['image'] )
 		
-		for k, v in input.iteritems():
+		for k, v in input.items():
 			if isinstance(v, dict):
 				temp = {}
 				
-				for k2, v2 in v.iteritems():
+				for k2, v2 in v.items():
 					if k2.startswith('image'):
 						
 						temp[k2] = NinePatch( image.get_region(*v2) )

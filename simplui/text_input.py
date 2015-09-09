@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, EditableLabel
-from widget import Widget
-from geometry import Size
+from .shape import Rectangle, EditableLabel
+from .widget import Widget
+from .geometry import Size
 
 class TextInput(Widget):
 	"""Text input field"""

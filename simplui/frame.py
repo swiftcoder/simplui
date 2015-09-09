@@ -34,9 +34,9 @@
 import pyglet
 from pyglet.gl import *
 
-from shape import Rectangle
-from widget import Widget
-from container import Container
+from .shape import Rectangle
+from .widget import Widget
+from .container import Container
 
 class Frame(Container):
 	"""Root GUI container"""

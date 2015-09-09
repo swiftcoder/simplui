@@ -28,10 +28,10 @@ def cycle_themes(button):
 	frame.theme = themes[theme]
 
 def check_action(checkbox):
-	print 'checkox', ('checked' if checkbox.value else 'unchecked')
+	print( 'checkox', ('checked' if checkbox.value else 'unchecked'))
 
 def slider_action(slider):
-	print 'slider moved to:', round(slider.value, 2)
+	print( 'slider moved to:', round(slider.value, 2))
 
 def button_action(button):
 	# when the button is clicked, we retrieve a named element from the gui
@@ -40,7 +40,7 @@ def button_action(button):
 	element.add( Label('This is another label...') )
 
 def text_action(input):
-	print 'text entered:', input.text
+	print( 'text entered:', input.text)
 
 # create dialogue - note that we create the entire gui in a single call
 dialogue = Dialogue('Inspector', x=200, y=500, content=

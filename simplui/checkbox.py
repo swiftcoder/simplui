@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from widget import Widget
-from geometry import Size
+from .shape import Rectangle, BasicLabel
+from .widget import Widget
+from .geometry import Size
 
 class Checkbox(Widget):
 	"""Clickable checkbox with textual label"""

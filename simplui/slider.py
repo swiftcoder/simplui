@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle
-from widget import Widget
-from geometry import Size
+from .shape import Rectangle
+from .widget import Widget
+from .geometry import Size
 
 class Slider(Widget):
 	"""Value slider"""

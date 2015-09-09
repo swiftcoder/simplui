@@ -250,7 +250,7 @@ class NinePatch(object):
 		height = max(height, self.height + 2)
 		
 		glBindTexture(self.texture.target, self.texture.id)
-		pyglet.graphics.draw_indexed(16, GL_QUADS, self.indices, ('v2i', self.get_vertices(x, y, width, height)), ('t2f', self.tex_coords))
+		pyglet.graphics.draw_indexed(16, GL_QUADS, self.indices, ('v2i', self.get_vertices(int(x), int(y), int(width), int(height))), ('t2f', self.tex_coords))
 		glBindTexture(self.texture.target, 0)
 	
 	def draw_around(self, x, y, width, height):
@@ -268,7 +268,7 @@ class NinePatch(object):
 		width = max(width, self.width + 2)
 		height = max(height, self.height + 2)
 		
-		vertex_list.vertices = self.get_vertices(x, y, width, height)
+		vertex_list.vertices = self.get_vertices(int(x), int(y), int(width), int(height))
 		vertex_list.tex_coords = self.tex_coords
 
 	def update_vertex_list_around(self, vertex_list, x, y, width, height):

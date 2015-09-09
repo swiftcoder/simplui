@@ -33,9 +33,9 @@
 
 import pyglet
 
-from widget import Widget
-from container import Container
-from geometry import Size
+from .widget import Widget
+from .container import Container
+from .geometry import Size
 
 class FlowLayout(Container):
 	"""Automatically overflows into lines, and centers each line"""

@@ -33,10 +33,10 @@
 
 import pyglet
 
-from shape import Rectangle
-from widget import Widget
-from container import Container
-from geometry import Size
+from .shape import Rectangle
+from .widget import Widget
+from .container import Container
+from .geometry import Size
 
 class Layout(Container):
 	def __init__(self, axis, **kwargs):

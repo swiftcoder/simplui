@@ -33,10 +33,10 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from geometry import Rect, Size
-from widget import Widget
-from container import Container, SingleContainer
+from .shape import Rectangle, BasicLabel
+from .geometry import Rect, Size
+from .widget import Widget
+from .container import Container, SingleContainer
 
 class FoldingBox(SingleContainer):
 	"""Collapsible container"""

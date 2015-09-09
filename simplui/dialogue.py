@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from geometry import Rect, Size
-from container import Container, SingleContainer
+from .shape import Rectangle, BasicLabel
+from .geometry import Rect, Size
+from .container import Container, SingleContainer
 
 class Dialogue(SingleContainer):
 	"""Moveable window, optionally resizeable"""

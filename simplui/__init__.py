@@ -103,18 +103,18 @@ See 'demo.py' in the enclosing directory for a brief tutorial.
 __author__ =  'Tristam MacDonald'
 __version__=  '1.0.3'
 
-from theme import Theme
-from frame import Frame
+from .theme import Theme
+from .frame import Frame
 
-from dialogue import Dialogue
+from .dialogue import Dialogue
 
-from container import Container
-from layout import HLayout, VLayout
-from flow_layout import FlowLayout
-from folding_box import FoldingBox
+from .container import Container
+from .layout import HLayout, VLayout
+from .flow_layout import FlowLayout
+from .folding_box import FoldingBox
 
-from label import Label
-from checkbox import Checkbox
-from button import Button
-from text_input import TextInput
-from slider import Slider
+from .label import Label
+from .checkbox import Checkbox
+from .button import Button
+from .text_input import TextInput
+from .slider import Slider

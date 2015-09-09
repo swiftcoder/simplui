@@ -34,9 +34,9 @@
 import pyglet
 from pyglet.gl import *
 
-from widget import Widget
+from .widget import Widget
 
-from geometry import Rect
+from .geometry import Rect
 
 class Container(Widget):
 	"""Base class for all GUI containers, also usable by itself"""

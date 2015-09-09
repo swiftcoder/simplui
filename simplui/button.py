@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from geometry import Rect, Size
-from widget import Widget
+from .shape import Rectangle, BasicLabel
+from .geometry import Rect, Size
+from .widget import Widget
 
 class Button(Widget):
 	"""Clickable button"""

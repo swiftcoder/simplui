@@ -75,12 +75,6 @@ class Container(Widget):
 		for c in self.children:
 			c.update_elements()
 	
-	def update_global_coords(self):
-		Widget.update_global_coords(self)
-		
-		for c in self.children:
-			c.update_global_coords()
-	
 	def update_theme(self, theme):
 		Widget.update_theme(self, theme)
 		

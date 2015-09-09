@@ -116,7 +116,7 @@ class Rect(object):
 		return (self.x + self.w, self.y + self.h)
 	
 	def __iter__(self):
-		return ((self.x, self.y, self.w, self.h))
+		return iter((self.x, self.y, self.w, self.h))
 	
 	def __repr__(self):
 		return 'Rect(%d %d %d %d)' % (self.x, self.y, self.w, self.h)

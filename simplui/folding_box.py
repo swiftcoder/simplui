@@ -105,7 +105,7 @@ class FoldingBox(SingleContainer):
 			
 			self.shapes['topbar'].update(self._gx + patch.padding_left, self._gy + self.h - patch.padding_top, self.w - patch.padding_left - patch.padding_right, 1)
 			self.elements['title'].x = self._gx + patch.padding_left
-			self.elements['title'].y = self._gy + self.h - patch.padding_top/2 + 1
+			self.elements['title'].y = self._gy + self.h - patch.padding_top//2 + 1
 			
 			self.topbar = Rect(0, self.h-patch.padding_top, self.w, patch.padding_top)
 		

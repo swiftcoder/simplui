@@ -76,8 +76,8 @@ class Button(Widget):
 			
 			self._pref_size = Size(patch.padding_left + label.content_width + patch.padding_right, patch.padding_bottom + height + patch.padding_top)
 			
-			label.x = patch.padding_left + label.content_width/2
-			label.y = patch.padding_bottom + height/2 - font.descent
+			label.x = patch.padding_left + label.content_width//2
+			label.y = patch.padding_bottom + height//2 - font.descent
 			
 			self.shapes['frame'].patch = patch
 	
@@ -92,13 +92,13 @@ class Button(Widget):
 			
 			left = 0
 			if self.halign == 'center':
-				left = self.w/2 - self._pref_size[0]/2
+				left = self.w//2 - self._pref_size[0]//2
 			elif self.halign == 'right':
 				left = self.w - self._pref_size[0]
 			
 			bottom = 0
 			if self.valign == 'center':
-				bottom = self.h/2 - self._pref_size[1]/2
+				bottom = self.h//2 - self._pref_size[1]//2
 			elif self.valign == 'top':
 				bottom = self.h - self._pref_size[1]
 			

@@ -72,7 +72,7 @@ class Layout(Container):
 		l = len(flexible)
 		
 		if l > 0:
-			extrah = freeh / len(flexible)
+			extrah = freeh // len(flexible)
 		
 		th = self.padding[self._axis]
 		

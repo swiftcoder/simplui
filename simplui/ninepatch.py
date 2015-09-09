@@ -56,10 +56,20 @@ class PixelData(object):
 	def is_black(self, x, y):
 		p = (y * self.width + x) * 4
 		if self.has_alpha:
-			if self.data[p+3] != '\xFF':
+			val = self.data[p+3] #byte
+			if val != '\xFF': # python2
+				if type(val) != int or int(val)!= 255: #ptyhon3
+					return False # transparent
+
+		return self.data[p:p+3] == b'\x00\x00\x00'
+
+	def is_black_p3(self, x, y):
+		p = (y * self.width + x) * 4
+		if self.has_alpha:
+			if self.data[p+3] != b'\xFF':
 				return False # transparent
 
-		return self.data[p:p+3] == '\x00\x00\x00'
+		return self.data[p:p+3] == b'\x00\x00\x00'
 
 class NinePatch(object):
 	"""A scalable 9-patch image.
@@ -267,7 +277,7 @@ class NinePatch(object):
 		width = max(width, self.width + 2)
 		height = max(height, self.height + 2)
 		
-		vertex_list.vertices = self.get_vertices(int(x), int(y), int(width), int(height))
+		vertex_list.vertices = self.get_vertices(x, y, width, height)
 		vertex_list.tex_coords = self.tex_coords
 
 	def update_vertex_list_around(self, vertex_list, x, y, width, height):

@@ -33,10 +33,10 @@
 
 import pyglet
 
-from shape import Rectangle
-from widget import Widget
-from container import Container
-from geometry import Size
+from .shape import Rectangle
+from .widget import Widget
+from .container import Container
+from .geometry import Size
 
 class Layout(Container):
 	def __init__(self, axis, **kwargs):
@@ -72,7 +72,7 @@ class Layout(Container):
 		l = len(flexible)
 		
 		if l > 0:
-			extrah = freeh / len(flexible)
+			extrah = freeh // len(flexible)
 		
 		th = self.padding[self._axis]
 		

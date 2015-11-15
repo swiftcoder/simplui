@@ -31,12 +31,9 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------
 
-import pyglet
-from pyglet.gl import *
 
-from shape import Rectangle
-
-from geometry import Rect, Size
+from .geometry import Rect, Size
+from pyglet import graphics
 
 class Widget(object):
 	"""Base class for all GUI elements"""
@@ -134,7 +131,7 @@ class Widget(object):
 		return root
 	
 	def update_names(self, oldname=None):
-		from frame import Frame
+		from .frame import Frame
 		r = self.find_root()
 		if isinstance(r, Frame):
 			if oldname:
@@ -143,7 +140,7 @@ class Widget(object):
 				r.names[self.name] = self
 	
 	def remove_names(self):
-		from frame import Frame
+		from .frame import Frame
 		r = self.find_root()
 		if isinstance(r, Frame):
 			if self.name:
@@ -168,13 +165,13 @@ class Widget(object):
 	def update_batch(self, batch, group):
 		self._batch, self._group = batch, group
 		
-		shape_group = pyglet.graphics.OrderedGroup(0, group)
-		text_group = pyglet.graphics.OrderedGroup(1, group)
+		shape_group = graphics.OrderedGroup(0, group)
+		text_group = graphics.OrderedGroup(1, group)
 		
-		for k, e in self.shapes.iteritems():
+		for e in self.shapes.values():
 			e.update_batch((batch if self.visible else None), shape_group)
 		
-		for k, e in self.elements.iteritems():
+		for e in self.elements.values():
 			e.update_batch((batch if self.visible else None), text_group)
 		
 		self._dirty = True

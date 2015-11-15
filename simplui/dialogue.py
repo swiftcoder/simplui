@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from geometry import Rect, Size
-from container import Container, SingleContainer
+from .shape import Rectangle, BasicLabel
+from .geometry import Rect, Size
+from .container import SingleContainer
 
 class Dialogue(SingleContainer):
 	"""Moveable window, optionally resizeable"""
@@ -98,7 +98,7 @@ class Dialogue(SingleContainer):
 			self.shapes['background'].update(self._gx, self._gy, self.w, self.h)
 			self.shapes['title_bar'].update_in(self._gx - background.padding_left, self._gy + self.h, self.w + background.padding_left + background.padding_right, h)
 			
-			self.elements['title'].x = self._gx + self.w/2
+			self.elements['title'].x = self._gx + self.w//2
 			
 			self.topbar = Rect(-background.padding_left, self.h, self.w + background.padding_left + background.padding_right, h)
 			self.elements['title'].y = self._gy + self.h + title_bar.padding_bottom - font.descent

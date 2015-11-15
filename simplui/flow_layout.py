@@ -33,9 +33,9 @@
 
 import pyglet
 
-from widget import Widget
-from container import Container
-from geometry import Size
+from .widget import Widget
+from .container import Container
+from .geometry import Size
 
 class FlowLayout(Container):
 	"""Automatically overflows into lines, and centers each line"""
@@ -85,10 +85,10 @@ class FlowLayout(Container):
 		h = self.padding[1]
 		
 		for maxh, width, line in self.lines[::-1]:
-			w = maxw/2 - width/2 + self.padding[0]
+			w = maxw//2 - width//2 + self.padding[0]
 			
 			for c in line:
-				c._x, c._y = w, h + maxh/2 - c._pref_size.h/2
+				c._x, c._y = w, h + maxh//2 - c._pref_size.h//2
 				c.reset_size(c._pref_size)
 				w += c._pref_size[0] + self.padding[0]
 			h += maxh + self.padding[1]

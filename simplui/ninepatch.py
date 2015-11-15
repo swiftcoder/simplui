@@ -30,6 +30,8 @@
 # ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------
+from pyglet.gl.gl import glBindTexture, GL_QUADS
+from pyglet import graphics
 
 """Draw a NinePatch image.
 
@@ -43,9 +45,6 @@ http://developer.android.com/guide/topics/graphics/2d-graphics.html#nine-patch.
 
 __all__ = ["NinePatch"]
 
-import pyglet
-from pyglet.gl import *
-
 class PixelData(object):
 	def __init__(self, image):
 		image_data = image.get_image_data()
@@ -57,10 +56,20 @@ class PixelData(object):
 	def is_black(self, x, y):
 		p = (y * self.width + x) * 4
 		if self.has_alpha:
-			if self.data[p+3] != '\xFF':
+			val = self.data[p+3] #byte
+			if val != '\xFF': # python2
+				if type(val) != int or int(val)!= 255: #ptyhon3
+					return False # transparent
+
+		return self.data[p:p+3] == b'\x00\x00\x00'
+
+	def is_black_p3(self, x, y):
+		p = (y * self.width + x) * 4
+		if self.has_alpha:
+			if self.data[p+3] != b'\xFF':
 				return False # transparent
 
-		return self.data[p:p+3] == '\x00\x00\x00'
+		return self.data[p:p+3] == b'\x00\x00\x00'
 
 class NinePatch(object):
 	"""A scalable 9-patch image.
@@ -250,7 +259,7 @@ class NinePatch(object):
 		height = max(height, self.height + 2)
 		
 		glBindTexture(self.texture.target, self.texture.id)
-		pyglet.graphics.draw_indexed(16, GL_QUADS, self.indices, ('v2i', self.get_vertices(x, y, width, height)), ('t2f', self.tex_coords))
+		graphics.draw_indexed(16, GL_QUADS, self.indices, ('v2i', self.get_vertices(int(x), int(y), int(width), int(height))), ('t2f', self.tex_coords))
 		glBindTexture(self.texture.target, 0)
 	
 	def draw_around(self, x, y, width, height):
@@ -262,7 +271,7 @@ class NinePatch(object):
 			)
 	
 	def build_vertex_list(self, batch, group):
-		return batch.add_indexed(16, GL_QUADS, pyglet.graphics.TextureGroup(self.texture, group), self.indices, 'v2i', ('t2f', self.tex_coords))
+		return batch.add_indexed(16, GL_QUADS, graphics.TextureGroup(self.texture, group), self.indices, 'v2i', ('t2f', self.tex_coords))
 	
 	def update_vertex_list(self, vertex_list, x, y, width, height):
 		width = max(width, self.width + 2)

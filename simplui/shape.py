@@ -31,7 +31,6 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------
 
-import pyglet
 from pyglet.gl import *
 
 class Rectangle(object):

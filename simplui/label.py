@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, BasicLabel
-from widget import Widget
-from geometry import Size
+from .shape import Rectangle, BasicLabel
+from .widget import Widget
+from .geometry import Size
 
 class Label(Widget):
 	"""Textual label"""
@@ -79,13 +79,13 @@ class Label(Widget):
 		if self._dirty and self.theme:
 			left = 0
 			if self.halign == 'center':
-				left = self.w/2 - self._pref_size[0]/2
+				left = self.w//2 - self._pref_size[0]/2
 			elif self.halign == 'right':
 				left = self.w - self._pref_size[0]
 			
 			bottom = 0
 			if self.valign == 'center':
-				bottom = self.h/2 - self._pref_size[1]/2
+				bottom = self.h//2 - self._pref_size[1]/2
 			elif self.valign == 'top':
 				bottom = self.h - self._pref_size[1]
 			

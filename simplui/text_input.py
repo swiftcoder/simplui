@@ -33,9 +33,9 @@
 
 import pyglet
 
-from shape import Rectangle, EditableLabel
-from widget import Widget
-from geometry import Size
+from .shape import Rectangle, EditableLabel
+from .widget import Widget
+from .geometry import Size
 
 class TextInput(Widget):
 	"""Text input field"""
@@ -93,7 +93,7 @@ class TextInput(Widget):
 			
 			bottom = 0
 			if self.valign == 'center':
-				bottom = self.h/2 - self._pref_size[1]/2
+				bottom = self.h//2 - self._pref_size[1]//2
 			elif self.valign == 'top':
 				bottom = self.h - self._pref_size[1]
 			

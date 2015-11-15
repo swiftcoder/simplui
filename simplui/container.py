@@ -31,12 +31,11 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------
 
-import pyglet
 from pyglet.gl import *
 
-from widget import Widget
+from .widget import Widget
 
-from geometry import Rect
+from .geometry import Rect
 
 class Container(Widget):
 	"""Base class for all GUI containers, also usable by itself"""
@@ -74,12 +73,6 @@ class Container(Widget):
 		
 		for c in self.children:
 			c.update_elements()
-	
-	def update_global_coords(self):
-		Widget.update_global_coords(self)
-		
-		for c in self.children:
-			c.update_global_coords()
 	
 	def update_theme(self, theme):
 		Widget.update_theme(self, theme)
